@@ -6,9 +6,7 @@ Requirements:
 ```
 dpkg --add-architecture i386
 apt-get update
-apt-get install gcc-multilib
-apt-get install libmysqlclient-dev:i386
-apt-get install g++-multilib
+apt-get install gcc-multilib g++-multilib
 ```
 
 Starting the server:
