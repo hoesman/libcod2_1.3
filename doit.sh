@@ -1,9 +1,7 @@
 #!/bin/bash
 
+# ./doit.sh 
 # ./doit.sh clean
-# ./doit.sh cod2_1_0
-# ./doit.sh cod2_1_2
-# ./doit.sh cod2_1_3
 
 cc="g++"
 options="-I. -m32 -fPIC -Wall"
