@@ -1,0 +1,89 @@
+#ifndef _GSC_HPP_
+#define _GSC_HPP_
+
+#define COD2_1_0 210
+#define COD2_1_2 212
+#define COD2_1_3 213
+
+#define COD2_MAX_STRINGLENGTH 1024
+
+/* default stuff */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <dlfcn.h> // dlcall
+#include <stdarg.h> // va_args
+#include <unistd.h> //link, unlink, usleep
+#include <dirent.h> // dir stuff
+#include <sys/mman.h> // mprotect
+#include <execinfo.h> // stacktrace
+#include <stddef.h> // offsetof
+#include <sys/stat.h> // fsize
+#include <time.h>  // getsystemtime
+#include <ctype.h> // isdigit
+
+#include "config.hpp"
+#include "declarations.hpp"
+#include "functions.hpp"
+#include "cracking.hpp"
+
+
+#ifdef EXTRA_INCLUDES_INC
+#include "extra/includes.hpp"
+#endif
+
+#define STACK_UNDEFINED 0
+#define STACK_OBJECT 1
+#define STACK_STRING 2
+#define STACK_LOCALIZED_STRING 3
+#define STACK_VECTOR 4
+#define STACK_FLOAT 5
+#define STACK_INT 6
+#define STACK_CODEPOS 7
+#define STACK_PRECODEPOS 8
+#define STACK_FUNCTION 9
+#define STACK_STACK 10
+#define STACK_ANIMATION 11
+#define STACK_DEVELOPER_CODEPOS 12
+#define STACK_INCLUDE_CODEPOS 13
+#define STACK_THREAD_LIST 14
+#define STACK_THREAD_1 15
+#define STACK_THREAD_2 16
+#define STACK_THREAD_3 17
+#define STACK_THREAD_4 18
+#define STACK_STRUCT 19
+#define STACK_REMOVED_ENTITY 20
+#define STACK_ENTITY 21
+#define STACK_ARRAY 22
+#define STACK_REMOVED_THREAD 23
+
+#define stackPushUndefined Scr_AddUndefined
+#define stackPushBool Scr_AddBool
+#define stackPushInt Scr_AddInt
+#define stackPushFloat Scr_AddFloat
+#define stackPushString Scr_AddString
+#define stackPushVector Scr_AddVector
+#define stackPushEntity Scr_AddEntity
+#define stackPushArray Scr_MakeArray
+#define stackPushArrayLast Scr_AddArray
+#define stackPushObject Scr_AddObject
+
+int stackGetParamType(int param);
+const char *stackGetParamTypeAsString(int param);
+
+int stackGetParams(const char *params, ...);
+void stackError(const char *format, ...);
+
+int stackGetParamInt(int param, int *value);
+int stackGetParamFunction(int param, int *value);
+int stackGetParamString(int param, char **value);
+int stackGetParamConstString(int param, unsigned int *value);
+int stackGetParamVector(int param, vec3_t value);
+int stackGetParamFloat(int param, float *value);
+int stackGetParamObject(int param, unsigned int *value);
+
+xfunction_t Scr_GetCustomFunction(const char **fname, qboolean *fdev);
+xmethod_t Scr_GetCustomMethod(const char **fname, qboolean *fdev);
+
+#endif
