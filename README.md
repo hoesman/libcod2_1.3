@@ -1,4 +1,4 @@
-This is a stripped down *libcod* version with only patches/fixes/protections for:
+This is a stripped down *libcod* fork from [damage99/libcod](https://github.com/damage99/libcod) with only patches/fixes/protections for:
 
  - Call Of Duty 2 1.3
 
